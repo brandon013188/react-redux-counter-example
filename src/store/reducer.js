@@ -19,13 +19,13 @@ const reducer = (state = initialState, action) => {
 		case 'ADD': 
 			return {
 				...state, 
-				counter: state.counter + 5
+				counter: state.counter + action.value
 			}
 			break;
 		case 'SUBTRACT': 
 			return {
 				...state, 
-				counter: state.counter - 5
+				counter: state.counter - action.value
 			}
 			break;
 		default: 
