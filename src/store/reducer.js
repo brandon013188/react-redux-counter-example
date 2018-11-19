@@ -9,25 +9,23 @@ const reducer = (state = initialState, action) => {
 				...state, 
 				counter: state.counter + 1
 			}
-			break;
+			// the break statement is not needed as the return here
+			// break;
 		case 'DECREMENT': 
 			return {
 				...state, 
 				counter: state.counter - 1
 			}
-			break;
 		case 'ADD': 
 			return {
 				...state, 
 				counter: state.counter + action.value
 			}
-			break;
 		case 'SUBTRACT': 
 			return {
 				...state, 
 				counter: state.counter - action.value
 			}
-			break;
 		default: 
 			return state;
 	}
