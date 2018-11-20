@@ -17,7 +17,7 @@ class Counter extends Component {
                 <CounterControl label="Add" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract" clicked={this.props.onSubtractCounter}  />
                 <hr />
-                <button onClick={this.props.onStoreResult}>Store Result</button>
+                <button onClick={() => this.props.onStoreResult(this.props.counter)}>Store Result</button>
                 <ul>
                     {this.props.results.map( result => (
                         <li 
@@ -34,8 +34,8 @@ class Counter extends Component {
 // Note: the state is the state in redux
 const mapStateToProps = state => {
     return {
-        counter: state.counter,
-        results: state.results
+        counter: state.ctr.counter,
+        results: state.res.results
     };
 }
 
@@ -48,7 +48,7 @@ const mapDispatchToProps = dispatch => {
         // payload is standard name to hold the js object which contains all the relevant 
         // data to pass with the action 
         // e.g. onAddCounter: () => dispatch({type: 'ADD', payload: {name: 'brandon'}})
-        onStoreResult: () => dispatch({type: ACTION_TYPES.STORE_RESULT}),
+        onStoreResult: (result) => dispatch({type: ACTION_TYPES.STORE_RESULT, result: result}),
         onDeleteResult: (id) => dispatch({type: ACTION_TYPES.DELETE_RESULT, id: id})
 
     };
