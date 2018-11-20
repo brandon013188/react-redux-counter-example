@@ -15,6 +15,15 @@ class Counter extends Component {
                 <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
                 <CounterControl label="Add" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract" clicked={this.props.onSubtractCounter}  />
+                <hr />
+                <button onClick={this.props.onStoreResult}>Store Result</button>
+                <ul>
+                    {this.props.results.map( result => (
+                        <li 
+                            key={result.id}
+                            onClick={() => this.props.onDeleteResult(result.id)}>{result.value}</li>
+                    ))}
+                </ul>           
             </div>
         );
     }
@@ -24,7 +33,8 @@ class Counter extends Component {
 // Note: the state is the state in redux
 const mapStateToProps = state => {
     return {
-        counter: state.counter
+        counter: state.counter,
+        results: state.results
     };
 }
 
@@ -37,6 +47,9 @@ const mapDispatchToProps = dispatch => {
         // payload is standard name to hold the js object which contains all the relevant 
         // data to pass with the action 
         // e.g. onAddCounter: () => dispatch({type: 'ADD', payload: {name: 'brandon'}})
+        onStoreResult: () => dispatch({type: 'STORE_RESULT'}),
+        onDeleteResult: (id) => dispatch({type: 'DELETE_RESULT', id: id})
+
     };
 }
 
