@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
+import * as ACTION_TYPES from '../../store/actions';
 
 class Counter extends Component {
    
@@ -40,15 +41,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
-        onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
-        onAddCounter: () => dispatch({type: 'ADD', value: 10}),
-        onSubtractCounter: () => dispatch({type: 'SUBTRACT', value: 10}),
+        onIncrementCounter: () => dispatch({type: ACTION_TYPES.INCREMENT}),
+        onDecrementCounter: () => dispatch({type: ACTION_TYPES.DECREMENT}),
+        onAddCounter: () => dispatch({type: ACTION_TYPES.ADD, value: 10}),
+        onSubtractCounter: () => dispatch({type: ACTION_TYPES.SUBTRACT, value: 10}),
         // payload is standard name to hold the js object which contains all the relevant 
         // data to pass with the action 
         // e.g. onAddCounter: () => dispatch({type: 'ADD', payload: {name: 'brandon'}})
-        onStoreResult: () => dispatch({type: 'STORE_RESULT'}),
-        onDeleteResult: (id) => dispatch({type: 'DELETE_RESULT', id: id})
+        onStoreResult: () => dispatch({type: ACTION_TYPES.STORE_RESULT}),
+        onDeleteResult: (id) => dispatch({type: ACTION_TYPES.DELETE_RESULT, id: id})
 
     };
 }
