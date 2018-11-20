@@ -21,5 +21,10 @@ const rootReducer = combineReducers({
 // Create the central store
 const store = createStore(rootReducer);
 
+// Added subscription to the store
+store.subscribe(() => {
+	console.log('[Subscription]', store.getState());
+});
+
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
